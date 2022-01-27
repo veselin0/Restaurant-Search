@@ -4,7 +4,7 @@ module.exports = {
     rules: {
         'prettier/prettier': ['error', {tabWidth: 4}],
     },
-    riles: {
+    rules: {
         'prettier/prettier': ['error', {endOfLine: 'off'}],
     },
 };
