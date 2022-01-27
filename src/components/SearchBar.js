@@ -1,13 +1,23 @@
 import React from 'react';
 import {View, TextInput, StyleSheet, Image} from 'react-native';
 
+const SearchBar = ({term, onTermChange, onTermSubmit}) => {
 
-
-const SearchBar = () => {
   return (
     <View style={styles.background}>
-      <Image style={styles.icon} source={require('../../assets/search-line.png')} />
-      <TextInput style={styles.input} placeholder="Search" />
+      <Image
+        style={styles.icon}
+        source={require('../../assets/search-line.png')}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Search"
+        autoCorrect={false}
+        autoCapitalize="none"
+        value={term}
+        onChangeText={onTermChange}
+        onEndEditing={onTermSubmit}
+      />
     </View>
   );
 };
@@ -22,14 +32,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   icon: {
-      height: 30,
-      alignSelf: 'center',
-      marginHorizontal: 15
+    height: 30,
+    alignSelf: 'center',
+    marginHorizontal: 15,
   },
   input: {
-      flex: 1,
-      fontSize: 18,
-  } 
+    flex: 1,
+    fontSize: 18,
+  },
 });
 
 export default SearchBar;
