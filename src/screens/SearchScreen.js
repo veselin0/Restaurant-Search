@@ -16,7 +16,7 @@ const SearchScreen = ({ navigation }) => {
 	};
 
 	return (
-		<View style={{ flex: 1 }}>
+		<>
 			<SearchBar
 				term={term}
 				onTermChange={setTerm}
@@ -46,7 +46,7 @@ const SearchScreen = ({ navigation }) => {
 					onPress={() => navigation.navigate('Details')}
 				/>
 			</ScrollView>
-		</View>
+		</>
 	);
 };
 
