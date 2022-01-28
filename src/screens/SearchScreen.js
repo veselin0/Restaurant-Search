@@ -23,7 +23,6 @@ const SearchScreen = ({ navigation }) => {
 				onTermSubmit={searchApi}
 			/>
 			{errorMessage ? <Text>{errorMessage}</Text> : null}
-			<Text>We have found {results.length} results</Text>
 			<ScrollView>
 				<ResultsList
 					results={filterResultsByPrice('$')}
@@ -42,8 +41,8 @@ const SearchScreen = ({ navigation }) => {
 					title="Rockefeller"
 				/>
 				<Button
-					title="Go to Details Screen"
-					onPress={() => navigation.navigate('Details')}
+					title="Go to Results Show Screen"
+					onPress={() => navigation.navigate('ResultsShow')}
 				/>
 			</ScrollView>
 		</>
