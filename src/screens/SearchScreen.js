@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, StyleSheet, View, Button, TouchableOpacity } from 'react-native';
 
 import SearchBar from '../components/SearchBar';
@@ -9,6 +9,12 @@ const SearchScreen = ({ navigation }) => {
 	const [term, setTerm] = useState('');
 	const [searchApi, results, errorMessage] = useResults();
 
+    const filterResultsByPrice = (price) => {
+        return results.filter(result => {
+            return result.price === price;
+        });
+    };
+
 	return (
 		<View>
 			<SearchBar
@@ -18,9 +24,10 @@ const SearchScreen = ({ navigation }) => {
 			/>
 			{errorMessage ? <Text>{errorMessage}</Text> : null}
 			<Text>We have found {results.length} results</Text>
-            <ResultsList title='Cost Effective' />
-            <ResultsList title='Bit Pricier' />
-            <ResultsList title='Big Spender' />
+            <ResultsList results={filterResultsByPrice('$')} title='Cost Effective' />
+            <ResultsList results={filterResultsByPrice('$$')} title='Bit Pricier' />
+            <ResultsList results={filterResultsByPrice('$$$')} title='Big Spender' />
+            <ResultsList results={filterResultsByPrice('$$$$')} title='Rockefeller' />
 			<Button
 				title="Go to Details Screen"
 				onPress={() => navigation.navigate('Details')}
