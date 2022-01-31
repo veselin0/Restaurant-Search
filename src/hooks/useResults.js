@@ -7,6 +7,7 @@ export default () => {
 
 	const searchApi = async searchTerm => {
 		try {
+            console.log({ searchTerm });
 			const response = await yelp.get('/search', {
 				params: {
 					limit: 50,
@@ -15,7 +16,9 @@ export default () => {
 				},
 			});
 			setResults(response.data.businesses);
+            // setErrorMessage('');
 		} catch (err) {
+            console.error(err);
 			setErrorMessage('Something went wrong');
 		}
 	};
